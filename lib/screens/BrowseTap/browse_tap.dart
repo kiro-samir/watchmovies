@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/constants/color.dart';
+import 'package:movies_app/screens/BrowseTap/listItemCategoryDetails.dart';
 import 'package:movies_app/viewModel/browseCategory.dart';
 import 'package:movies_app/widgets/browseCategory/itemCategory.dart';
 import 'package:provider/provider.dart';
@@ -12,13 +13,12 @@ class BrowseTap extends StatefulWidget {
 }
 
 class _BrowseTapState extends State<BrowseTap> {
-  
   BrowseCategoryViewModel categoryViewModel = BrowseCategoryViewModel();
   @override
   void initState() {
     super.initState();
     if (categoryViewModel.listCategories == null) {
-      categoryViewModel.getCategories();  
+      categoryViewModel.getCategories();
     }
   }
 
@@ -85,8 +85,14 @@ class _BrowseTapState extends State<BrowseTap> {
                       itemCount: 10,
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap: (){
-
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ListItemCategoryDetails(
+                                  category: viewModel.listCategories![index],
+                                ),
+                              ),
+                            );
                           },
                           child: ItemCategory(
                             imageurl: viewModel.categoriesImages[index],
@@ -104,4 +110,13 @@ class _BrowseTapState extends State<BrowseTap> {
       ),
     );
   }
+}
+
+class ItemsArgs {
+  int id;
+  String name;
+  ItemsArgs({
+    required this.id,
+    required this.name,
+  });
 }

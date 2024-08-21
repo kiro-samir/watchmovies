@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/data/ApiManager.dart';
 import 'package:movies_app/data/browseModel/categoryModel.dart';
+import 'package:movies_app/data/browseModel/itemsCategoryModel.dart';
 
 class BrowseCategoryViewModel extends ChangeNotifier {
   List<CategoryDetails>? listCategories;
+  List<Results>? listItemsCategory;
+  String? itemErrorMessage;
   String? errMessage;
   List<String> categoriesImages = [
     'https://i.redd.it/8hk51nmvx5pa1.jpg',
@@ -15,7 +18,7 @@ class BrowseCategoryViewModel extends ChangeNotifier {
     "https://www.top10about.com/wp-content/uploads/2020/06/The-GodFather-700x491.jpg",
     'https://m.media-amazon.com/images/M/MV5BMjBlYzgzMzAtYTVmYi00YzRlLWFkMGQtMDNlOGI0YTI5OTE4XkEyXkFqcGdeQXVyNTI5NjIyMw@@._V1_FMjpg_UX1000_.jpg',
     'https://www.cinema9jaent.com/wp-content/uploads/Capture-254.png',
-    'https://usercontent2.hubstatic.com/14483345_f520.jpg'    
+    'https://usercontent2.hubstatic.com/14483345_f520.jpg'
   ];
   getCategories() async {
     try {
@@ -27,6 +30,23 @@ class BrowseCategoryViewModel extends ChangeNotifier {
       }
     } catch (e) {
       errMessage = e.toString();
+    }
+    notifyListeners();
+  }
+
+  getItemsCategory(String categoryId, String page) async {
+    itemErrorMessage = null;
+    listItemsCategory = null;
+    notifyListeners();
+    try {
+      var res = await ApiManager.getMoviesByCatergoryId(categoryId, page);
+      if (res?.errMessage != null && res?.success == 'false') {
+        itemErrorMessage = res!.errMessage;
+      } else if (res!.results != null) {
+        listItemsCategory = res.results;
+      }
+    } catch (e) {
+      itemErrorMessage = e.toString();
     }
     notifyListeners();
   }
