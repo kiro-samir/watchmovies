@@ -2,10 +2,13 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:movies_app/constants/ApiConstants.dart';
+import 'package:movies_app/data/browseModel/categoryModel.dart';
 
+    // 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=28'
+    
+    // base url for images https://image.tmdb.org/t/p/w500/
+    
 class ApiManager {
-
-
   void getmovies() async {
     Uri url = Uri.https(
       ApiConstants.baseurl,
@@ -17,11 +20,53 @@ class ApiManager {
     try {
       var response = await http.get(url);
       var json = jsonDecode(response.body);
-
-
-      
     } catch (e) {
-      rethrow;
+      throw e;
     }
   }
+
+  static Future<CategoryModel?>? getCategories() async {
+    // 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=28'
+    
+    // base url for images https://image.tmdb.org/t/p/w500/
+
+    Uri categoriesurl = Uri.https(
+      ApiConstants.baseurl,
+      ApiConstants.browseCategories,
+      {
+        'api_key': '81b8e20dee35c380e6f0fd57898ec3fd',
+      },
+    );
+    try {
+      var response = await http.get(categoriesurl);
+      var json = jsonDecode(response.body);
+      return CategoryModel.fromJson(json);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  void getMoviesByCatergoryId(String categoryId) async {
+    Uri url = Uri.https(
+      ApiConstants.baseurl,
+      ApiConstants.unencodedPath,
+      {
+        'api_key': '81b8e20dee35c380e6f0fd57898ec3fd',
+        "include_adult":"false",
+        "include_video":"false",
+        "language":"en-US",
+        "page":'1',
+        "sort_by":"popularity.desc",
+        "with_genres":categoryId,
+      },
+    );
+    try {
+      var response = await http.get(url);
+      var json = jsonDecode(response.body);
+      // Model
+    } catch (e) {
+      throw e;
+    }
+  }
+
 }
