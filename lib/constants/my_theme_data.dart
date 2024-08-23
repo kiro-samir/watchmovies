@@ -4,6 +4,7 @@ import 'package:movies_app/constants/color.dart';
 
 class MyThemeData {
   static final ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: AppColors.primaryColor,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       elevation: 0,
 
