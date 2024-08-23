@@ -3,14 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/constants/color.dart';
 import 'package:movies_app/screens/BrowseTap/browse_tap.dart';
+import 'package:movies_app/screens/HomeTap/home_tap.dart';
 import 'package:movies_app/screens/SearchTap/search_tap.dart';
 import 'package:movies_app/screens/WatchListTap/watch_list_tap.dart';
-import 'package:movies_app/screens/homeTap/home_tap.dart';
 import 'package:movies_app/viewModel/browseCategory.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String route_Name = "HomeScreen";
+
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

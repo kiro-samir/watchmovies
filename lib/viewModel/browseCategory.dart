@@ -9,7 +9,7 @@ class BrowseCategoryViewModel extends ChangeNotifier {
   String? itemErrorMessage;
   String? errMessage;
   List<String> categoriesImages = [
-    'https://i.redd.it/8hk51nmvx5pa1.jpg',
+    'https://www.tidbitsofexperience.com/wp-content/uploads/2023/06/John-Wick-4-poster-1086x1536.jpg',
     'https://i.ebayimg.com/images/g/hscAAOSwL3RiHLd9/s-l1200.jpg',
     'https://1.bp.blogspot.com/-SfMNGaa5yuc/X6niaLnY1kI/AAAAAAAAG0g/-QKEl19KjtsCj-FH_beFk4pSk-EdJTaDACLcBGAsYHQ/s600/httyd%2Bjohn%2Bpowell%2B5%2Bflying.jpg',
     'https://artchatterblog.files.wordpress.com/2014/02/movieposter.jpg',
