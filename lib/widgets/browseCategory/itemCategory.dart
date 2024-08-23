@@ -14,7 +14,6 @@ class ItemCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Image.network(
@@ -24,7 +23,8 @@ class ItemCategory extends StatelessWidget {
           height: double.infinity,
         ),
         Container(
-          color: Colors.grey[700]?.withOpacity(0.4),
+          color: const Color(0xff343534),
+          // Colors.grey[500]?.withOpacity(0.4),
         ),
         Center(
           child: Text(

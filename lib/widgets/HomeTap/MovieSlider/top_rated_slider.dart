@@ -18,18 +18,20 @@ class TopRatedSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: height*0.03,
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.37,
+          height: height * 0.37,
           child: Container(
             color: AppColors.graylightColor,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(height*0.010),
               child: Stack(
                 children: [
                   Text(
@@ -37,49 +39,51 @@ class TopRatedSlider extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: height*0.03),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       itemCount: 20,
                       itemBuilder: (contex, Index) {
                         return Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(height*0.010),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(6),
                             child: SizedBox(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Stack(
-                                    children: [
-                                      Container(
-                                        color: Colors.white,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.24,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.35,
-                                        child: Image.asset(
-                                          image,
-                                          fit: BoxFit.fill,
+                                  Expanded(
+                                    child: Stack(
+                                      children: [
+                                        Container(
+                                          color: Colors.white,
+                                          height:
+                                              height *
+                                                  0.24,
+                                          width:
+                                              width *
+                                                  0.35,
+                                          child: Image.asset(
+                                            image,
+                                            fit: BoxFit.fill,
+                                          ),
                                         ),
-                                      ),
-                                      Image.asset("assets/images/bookmark.png",
-                                          color: AppColors.grayColor),
-                                      const Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      )
-                                    ],
+                                        Image.asset("assets/images/bookmark.png",
+                                            color: AppColors.grayColor),
+                                        const Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  const SizedBox(height: 4),
+                                   SizedBox(height: height*0.009),
                                   Row(
                                     children: [
                                       Image.asset("assets/images/star.png"),
-                                      const SizedBox(
-                                        width: 4,
+                                      SizedBox(
+                                        width: width*0.005,
                                       ),
                                       Text(
                                         rated,
@@ -101,7 +105,8 @@ class TopRatedSlider extends StatelessWidget {
                                             fontSize: 15,
                                             fontWeight: FontWeight.w100),
                                   ),
-                                  Text(realse,
+                                  Text(
+                                    realse,
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall

@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const HomeTab(),
     const SearchTap(),
     ChangeNotifierProvider(
-      create: (context) => BrowseCategory(),
+      create: (context) => BrowseCategoryViewModel(),
       child: const BrowseTap(),
     ),
     const WatchListTap()
