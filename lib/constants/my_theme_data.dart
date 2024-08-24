@@ -8,7 +8,7 @@ class MyThemeData {
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       elevation: 0,
 
-      unselectedItemColor: AppColors.graylightColor,
+      unselectedItemColor: AppColors.grayColor,
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppColors.primaryColor,
       selectedItemColor: AppColors.goldColor,
@@ -43,7 +43,7 @@ class MyThemeData {
         fontFamily: "GothamBold",
         fontSize: 11,
         fontWeight: FontWeight.w500,
-        color: AppColors.graylightColor,
+        color: AppColors.grayColor,
       ),
       // Description
       bodySmall: const TextStyle(

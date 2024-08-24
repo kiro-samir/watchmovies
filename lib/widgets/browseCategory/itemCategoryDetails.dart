@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:movies_app/constants/color.dart';
 import 'package:movies_app/data/browseModel/itemsCategoryModel.dart';
@@ -11,8 +13,10 @@ class ItemCategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: 105,
+      height: height*0.173,
       child: Row(
         children: [
           Expanded(
@@ -31,8 +35,8 @@ class ItemCategoryDetails extends StatelessWidget {
                   size: 41,
                 ),
                 Positioned(
-                  left: 12.5,
-                  top: 13.5,
+                  left: width*0.035,
+                  top: width*0.037,
                   child: Text(
                     itemResult.voteAverage!.toStringAsFixed(1),
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -43,8 +47,8 @@ class ItemCategoryDetails extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            width: 20,
+          SizedBox(
+            width: height*0.015,
           ),
           Expanded(
             flex: 2,
@@ -55,10 +59,16 @@ class ItemCategoryDetails extends StatelessWidget {
                   itemResult.title!,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                Text(itemResult.overview!,maxLines: 1,overflow: TextOverflow.ellipsis,),
+                Text(
+                  itemResult.overview!,
+                  style: Theme.of(context).textTheme.titleSmall,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 const Spacer(),
                 Text(
                   "(${itemResult.voteCount})",
+                  style: Theme.of(context).textTheme.titleSmall,
                   textAlign: TextAlign.end,
                 ),
                 Text(

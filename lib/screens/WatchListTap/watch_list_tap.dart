@@ -1,7 +1,9 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:movies_app/constants/color.dart';
 import 'package:movies_app/screens/SearchTap/models/movie.dart';
-import 'package:movies_app/widget/MovieCard.dart';
+import 'package:movies_app/widgets/watchlist/MovieCard.dart';
 
 class WatchListTap extends StatefulWidget {
   @override
@@ -26,46 +28,49 @@ class _WatchListTapState extends State<WatchListTap> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
           "Watch List",
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.labelLarge,
         ),
       ),
-      body: ListView.builder(
+      body: ListView.separated(
+        separatorBuilder: (context,index)=> const Divider(thickness: 1,),
         itemCount: movies.length,
+        padding: EdgeInsets.only(
+                  top: width*0.04,
+                  bottom: width*0.04,
+                  right: width*0.04,
+                  left: width*0.04,
+                ),
         itemBuilder: (context, index) {
-          return Container(
-            margin: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.05,
-              right: MediaQuery.of(context).size.height * 0.05,
-            ),
-            child: Stack(
-              children: [
-                MovieCard(movie: movies[index]),
-                Positioned(
-                  top: MediaQuery.of(context).size.height * 0.005,
-                  left: MediaQuery.of(context).size.width * 0.001,
-                  child: const ImageIcon(
-                    AssetImage('assets/images/bookmark.png'),
-                    color: AppColors.goldColor,
-                    size: 35,
-                  ),
+          return Stack(
+            children: [
+              MovieCard(movie: movies[index]),
+              Positioned(
+                top: height * 0.005,
+                left: -4,
+                child: const ImageIcon(
+                  AssetImage('assets/images/bookmark.png'),
+                  color: AppColors.goldColor,
+                  size: 35,
                 ),
-                Positioned(
-                  child: Icon(
-                    Icons.check,
-                    size: 18,
-                    color: AppColors.whiteColor,
-                  ),
-                  top: MediaQuery.of(context).size.height * 0.010,
-                  left: MediaQuery.of(context).size.width * 0.014,
+              ),
+              Positioned(
+                top: height * 0.010,
+                left: width * 0.010,
+                child: const Icon(
+                  Icons.check,
+                  size: 18,
+                  color: AppColors.whiteColor,
                 ),
-              ],
-            ),
+              ),
+            ],
           );
         },
       ),

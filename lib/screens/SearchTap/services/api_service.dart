@@ -5,8 +5,8 @@ import 'package:movies_app/screens/SearchTap/models/api_watch.dart';
 import 'package:movies_app/screens/SearchTap/models/movie.dart';
 
 Future<ApiWatch> addApiSettings() async {
-  final apiKey = '62719ca1d744677169a0d4e9e0424a1f';
-  final url = 'https://api.themoviedb.org/3/configuration?api_key=$apiKey';
+  const  apiKey = '62719ca1d744677169a0d4e9e0424a1f';
+  const url = 'https://api.themoviedb.org/3/configuration?api_key=$apiKey';
 
   final response = await http.get(Uri.parse(url));
 

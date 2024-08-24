@@ -9,11 +9,13 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Container(
-          width: MediaQuery.of(context).size.width * 0.843,
-          height: MediaQuery.of(context).size.height * 0.12,
+          width: width * 0.843,
+          height: height * 0.15,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 1,
@@ -25,39 +27,30 @@ class MovieCard extends StatelessWidget {
                     child: Image.network(
                       'https://image.tmdb.org/t/p/w500${movie.imageUrl}',
                       fit: BoxFit.fill,
-                      width: MediaQuery.of(context).size.width * 0.33,
-                      height: MediaQuery.of(context).size.height * 0.11,
+                      width: width * 0.30,
+                      height: height * 0.19,
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(width*0.02),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           movie.title,
-                          style: TextStyle(
-                            color: AppColors.whiteColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                         Text(
                           movie.year,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall
                         ),
                         Text(
                           movie.actors,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
                     ),
@@ -67,7 +60,6 @@ class MovieCard extends StatelessWidget {
             },
           ),
         ),
-        Divider(),
       ],
     );
   }
