@@ -35,7 +35,7 @@ class _ListItemCategoryDetailsState extends State<ListItemCategoryDetails> {
 
   @override
   Widget build(BuildContext context) {
-    // var args = ModalRoute.of(context)!.settings.arguments as ItemsArgs;
+    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -74,11 +74,11 @@ class _ListItemCategoryDetailsState extends State<ListItemCategoryDetails> {
             } else {
               return ListView.separated(
                 physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.only(
-                  top: 15,
-                  bottom: 15,
-                  right: 18,
-                  left: 17,
+                padding: EdgeInsets.only(
+                  top: width*0.02,
+                  bottom: width*0.02,
+                  right: width*0.01,
+                  left: width*0.03,
                 ),
                 separatorBuilder: (context, index) => const Divider(
                   color: AppColors.grayColor,
@@ -88,7 +88,7 @@ class _ListItemCategoryDetailsState extends State<ListItemCategoryDetails> {
                 itemCount: 10,
                 itemBuilder: (context, index) {
                   return Container(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    padding: EdgeInsets.symmetric(vertical: width*0.01),
                     child: ItemCategoryDetails(
                       itemResult: viewModel.listItemsCategory![index],
                     ),

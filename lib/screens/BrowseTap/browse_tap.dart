@@ -28,6 +28,7 @@ class _BrowseTapState extends State<BrowseTap> {
     return Container(
       margin: EdgeInsets.only(
         top: height * 0.08,
+        left: height*0.008
       ),
       padding: EdgeInsets.all(
         height * 0.015,

@@ -1,5 +1,6 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'package:movies_app/constants/color.dart';
 import 'package:movies_app/data/browseModel/categoryModel.dart';
 
 class ItemCategory extends StatelessWidget {
@@ -23,8 +24,7 @@ class ItemCategory extends StatelessWidget {
           height: double.infinity,
         ),
         Container(
-          color: const Color(0xff343534),
-          // Colors.grey[500]?.withOpacity(0.4),
+          color: const Color(0xff343534).withOpacity(0.5),
         ),
         Center(
           child: Text(

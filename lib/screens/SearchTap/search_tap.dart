@@ -3,7 +3,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:movies_app/constants/color.dart';
 import 'package:movies_app/screens/SearchTap/models/movie.dart';
 import 'package:movies_app/screens/SearchTap/services/api_service.dart';
-import 'package:movies_app/widget/MovieCard.dart';
+import 'package:movies_app/widgets/watchlist/MovieCard.dart';
 
 class SearchTap extends StatelessWidget {
   @override
@@ -12,26 +12,30 @@ class SearchTap extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
       body: Padding(
         padding: EdgeInsets.only(
-          top: MediaQuery.of(context).size.height * 0.04,
+          top: MediaQuery.of(context).size.height * 0.07,
         ),
         child: Column(
           children: [
             Center(
               child: ConstrainedBox(
+                
                 constraints: BoxConstraints(
+                  
                   maxWidth: MediaQuery.of(context).size.width * 0.9,
                 ),
                 child: TypeAheadField<Movie>(
+                  
                   textFieldConfiguration: TextFieldConfiguration(
-                    style: TextStyle(color: AppColors.whiteColor),
+                    style: const TextStyle(color: AppColors.whiteColor),
                     cursorColor: AppColors.whiteColor,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(
+                      
+                      prefixIcon:const Icon(
                         Icons.search,
                         color: AppColors.whiteColor,
                       ),
                       hintText: 'Search Movies...',
-                      hintStyle: TextStyle(color: AppColors.whiteColor),
+                      hintStyle: const TextStyle(color: AppColors.whiteColor),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(
@@ -83,14 +87,16 @@ class SearchTap extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height * 0.3,
+
               ),
+              margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.02),
               child: ImageIcon(
-                AssetImage("assets/images/Icon_movies.png"),
-                size: MediaQuery.of(context).size.height * 0.1,
+                const AssetImage("assets/images/Icon_movies.png"),
+                size: MediaQuery.of(context).size.height * 0.15,
                 color: AppColors.grayColor,
               ),
             ),
-            Text('No movies found'),
+            Text('No movies found',style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.describtionColor),),
           ],
         ),
       ),

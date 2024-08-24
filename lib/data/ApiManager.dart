@@ -10,21 +10,21 @@ import 'package:movies_app/data/browseModel/itemsCategoryModel.dart';
 // base url for images https://image.tmdb.org/t/p/w500/
 
 class ApiManager {
-  void getmovies() async {
-    Uri url = Uri.https(
-      ApiConstants.baseurl,
-      ApiConstants.unencodedPath,
-      {
-        'api_key': '81b8e20dee35c380e6f0fd57898ec3fd',
-      },
-    );
-    try {
-      var response = await http.get(url);
-      var json = jsonDecode(response.body);
-    } catch (e) {
-      throw e;
-    }
-  }
+  // void getmovies() async {
+  //   Uri url = Uri.https(
+  //     ApiConstants.baseurl,
+  //     ApiConstants.unencodedPath,
+  //     {
+  //       'api_key': '81b8e20dee35c380e6f0fd57898ec3fd',
+  //     },
+  //   );
+  //   try {
+  //     var response = await http.get(url);
+  //     var json = jsonDecode(response.body);
+  //   } catch (e) {
+  //     throw e;
+  //   }
+  // }
 
   static Future<CategoryModel?>? getCategories() async {
 
